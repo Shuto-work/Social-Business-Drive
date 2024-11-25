@@ -1,0 +1,55 @@
+@use "../../global/mixin" as *;
+
+.p-header {
+  background-color: white;
+  width: 100vw;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 100px;
+}
+
+.p-header__logo {
+  max-width: 300px;
+  width: 100%;
+  display: inline-block;
+}
+
+.p-header__logo__img {
+  width: 100%;
+  height: auto;
+}
+
+.p-header__nav {
+  font-weight: 600;
+  font-size: pxToRem(20);
+}
+
+.p-header__nav__lists {
+  display: flex;
+  gap: 40px;
+}
+
+.p-header__nav_item {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 3px;
+    background: #000000;
+    bottom: -21px;
+    transform: scale(0, 1);
+    // transform-origin: left top; /*変形（アンダーラインの伸長）の原点がaタグ（各メニュー）の左端*/
+    transform-origin: center; /*変形（アンダーラインの伸長）の原点がaタグ（各メニュー）の左端*/
+    transition: transform 0.5s ease;
+  }
+
+  &:hover::after {
+    transform: scale(1, 1); /*ホバー後、x軸方向に1（相対値）伸長*/
+    transform-origin: right left; /*右から左に向かう*/
+  }
+}

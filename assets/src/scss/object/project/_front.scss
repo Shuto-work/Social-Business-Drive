@@ -1,0 +1,29 @@
+@use "../../global/variable" as *;
+
+.text_en {
+  font-family: $font_en !important;
+}
+
+.text_ja {
+  font-family: $font_ja;
+  color: lightcoral;
+}
+
+.p-fv__image {
+  position: absolute;
+  width: 100vw;
+  height: 500px;
+  object-fit: cover;
+}
+
+.p-fv__title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: wheat;
+  }
+}

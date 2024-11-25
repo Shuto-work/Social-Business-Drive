@@ -1,0 +1,17 @@
+{
+  "name": "social_business_drive",
+  "version": "1.0.0",
+  "description": "",
+  "main": "custom-script.js",
+  "scripts": {
+    "sass": "sass --watch assets/src/scss/style.scss:assets/dist/style.css --style compressed"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.81.0"
+  },
+  "dependencies": {
+    "rellax": "^1.12.1"
+  }
+}

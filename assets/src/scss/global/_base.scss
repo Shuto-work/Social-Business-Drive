@@ -1,0 +1,60 @@
+@use "../global/mixin" as *;
+@use "../global/variable" as *;
+
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+// Webフォント読み込み
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+@font-face {
+  font-family: "shippori__antique";
+  src: url("../../../fonts/Shippori_Antique/ShipporiAntique-Regular.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Copperplate";
+  src: url("../../../fonts/Copperplate/OPTICopperplate-Heavy.otf")
+      format("opentype"),
+    url("../../../fonts/copperplate/OPTICopperplate-Light.otf")
+      format("opentype"),
+    url("../../../fonts/copperplate/OPTICopperplate.otf") format("opentype");
+}
+
+html,
+body {
+  width: 100%;
+  font-family: $font_ja;
+  letter-spacing: 1px;
+  font-weight: 100;
+  background-color: $backgroundColor;
+}
+
+html {
+  margin: 0;
+}
+
+
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* ブラウザのスクロールバーを消す */
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+::-webkit-scrollbar {
+  display: none;
+}
+
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+// レスポンシブの表示/非表示の切り替え
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+.display-pc {
+  @include display-pc;
+}
+
+.display-tab {
+  @include display-tab;
+}
+
+.display-sp {
+  @include display-sp;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
