@@ -1,0 +1,10 @@
+# WordPress files to ignore
+/wp-content/uploads
+/wp-content/cache
+/wp-content/backups
+*.log
+*.swp
+*.bak
+node_modules/
+.idea/
+.vscode/
