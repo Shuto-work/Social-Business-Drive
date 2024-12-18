@@ -1,13 +1,9 @@
 @use "../../global/variable" as *;
+@use "../../global/mixin" as *;
 
-.text_en {
-  font-family: $font_en !important;
-}
-
-.text_ja {
-  font-family: $font_ja;
-  color: lightcoral;
-}
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+// ファースト ビュー
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
 .p-fv__image {
   position: absolute;
@@ -17,13 +13,193 @@
 }
 
 .p-fv__title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: all 0.2s ease;
+  text-align: center;
+  line-height: 200%;
+  font-size: pxToRem(32);
+  letter-spacing: 3px;
+  color: white;
+  margin-left: 15%;
+
+  @include mq(lg) {
+    padding: 0 20px;
+    font-size: pxToRem(26);
+    margin-left: 0%;
+    margin: 0 auto;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadein {
+  animation-name: fadein;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.p-fv__member__img {
+  width: 50%;
+  height: auto;
+
+  @include mq(lg) {
+    width: 100%;
+  }
+}
+
+.p-fv__message-container {
+  display: flex;
+  gap: 30px;
+
+  @include mq(lg) {
+    flex-direction: column;
+  }
+}
+
+.p-fv__message-wrap {
+}
+
+.p-fv__message__next {
+  margin-top: 30px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.5s ease;
+}
+
+.p-fv__message__next.is-active {
+  max-height: 100%;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.p-fv__message__more-btn {
+  font-size: pxToRem(20);
+  border: $backgroundColor;
+  background-color: initial;
+  cursor: pointer;
+  opacity: 0.3;
+  transition: all 0.3s ease;
 
   &:hover {
-    color: wheat;
+    background-color: $mainColorBlack;
+    color: white;
+    border-radius: 5px;
   }
+}
+
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+// 事業内容
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+.p-business__list {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  margin-top: 100px;
+
+  @include mq(lg) {
+    flex-direction: column;
+    margin-top: 50px;
+  }
+}
+
+.p-business__title {
+  font-size: pxToRem(22);
+  text-align: center;
+
+  @include mq(lg) {
+    font-size: pxToRem(24);
+    text-align: left;
+  }
+}
+
+.p-business__item {
+  max-width: 360px;
+  width: 100%;
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+
+  @include mq(lg) {
+    max-width: none;
+    width: 100%;
+    gap: 20px;
+  }
+}
+
+.p-business__text {
+  @include text($margin-top: 50px);
+
+  @include mq(lg) {
+    @include text($margin-top: 20px, $font-size: pxToRem(16));
+  }
+}
+
+.p-business__description {
+  @include text($margin-top: 0, $font-size: pxToRem(16));
+}
+
+.p-business__img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+// メンバー紹介
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+.p-member__container {
+  margin-top: 50px;
+  display: flex;
+  gap: 70px;
+  justify-content: center;
+  align-items: flex-start;
+
+  @include mq(lg) {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+.p-member__img {
+  width: 50%;
+  height: auto;
+
+  @include mq(lg) {
+    width: 100%;
+  }
+}
+
+.p-member__text-wrap {
+  text-align: left;
+}
+
+.p-member__title {
+  margin-top: 10px;
+  font-size: pxToRem(26);
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  @include mq(lg) {
+    font-size: pxToRem(20);
+  }
+}
+
+.p-member__text {
+  margin-top: 40px;
+  text-align: left;
+  font-size: pxToRem(16);
 }

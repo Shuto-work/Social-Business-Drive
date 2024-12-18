@@ -1,13 +1,18 @@
 @use "../../global/mixin" as *;
+@use "../../global/variable" as *;
 
 .p-header {
   background-color: white;
   width: 100vw;
-  height: auto;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 100px;
+  padding: 0px 120px;
+
+  @include mq(lg) {
+    padding: 0px 20px;
+  }
 }
 
 .p-header__logo {
@@ -19,20 +24,29 @@
 .p-header__logo__img {
   width: 100%;
   height: auto;
+
+  @include mq(lg) {
+    width: 40%;
+  }
 }
 
 .p-header__nav {
-  font-weight: 600;
+  font-weight: 500;
   font-size: pxToRem(20);
 }
 
 .p-header__nav__lists {
   display: flex;
   gap: 40px;
+  height: 70px;
+  align-items: center;
 }
 
 .p-header__nav_item {
   position: relative;
+  display: flex;
+  align-items: center;
+  height: 70px;
 
   &::after {
     position: absolute;
@@ -41,15 +55,166 @@
     width: 100%;
     height: 3px;
     background: #000000;
-    bottom: -21px;
+    bottom: 0px;
     transform: scale(0, 1);
-    // transform-origin: left top; /*変形（アンダーラインの伸長）の原点がaタグ（各メニュー）の左端*/
-    transform-origin: center; /*変形（アンダーラインの伸長）の原点がaタグ（各メニュー）の左端*/
+    transform-origin: center;
     transition: transform 0.5s ease;
   }
 
   &:hover::after {
-    transform: scale(1, 1); /*ホバー後、x軸方向に1（相対値）伸長*/
-    transform-origin: right left; /*右から左に向かう*/
+    transform: scale(1, 1);
+    transform-origin: right left;
+  }
+}
+
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝
+// ハンバーガー
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝
+.p-hamburger {
+  width: 80px;
+  height: 70px;
+  margin-right: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: top 0.5s ease;
+
+  span {
+    display: block;
+    height: 2px;
+    background-color: $mainColorBlack;
+    border-radius: 1px;
+    transition: transform 0.3s ease, width 0.3s ease;
+    margin-top: 14px;
+
+    &:first-child {
+      width: 100%;
+    }
+    &:nth-child(2) {
+      width: 100%;
+    }
+
+    @include mq(lg) {
+      margin-top: 7px;
+    }
+  }
+
+  @include mq(lg) {
+    width: 60px;
+    top: 17px;
+    margin-right: 20px;
+    height: 30px;
+  }
+}
+
+.p-hamburger.is-active {
+  z-index: 20;
+  .p-hamburger__line1 {
+    -webkit-transform: rotate(-25deg) translateY(-6px);
+    transform: rotate(-25deg) translateY(-6px);
+    width: 70%;
+    @include mq(lg) {
+      -webkit-transform: rotate(-30deg) translateY(-3px) translateX(-3px);
+      transform: rotate(-30deg) translateY(-3px) translateX(-3px);
+    }
+  }
+
+  .p-hamburger__line2 {
+    -webkit-transform: rotate(30deg) translateY(-12px) translateX(-20px);
+    transform: rotate(30deg) translateY(-12px) translateX(-20px);
+    width: 47%;
+
+    @include mq(lg) {
+      -webkit-transform: rotate(33deg) translateY(-4px) translateX(-12px);
+      transform: rotate(33deg) translateY(-4px) translateX(-12px);
+    }
+  }
+}
+
+body.nav-open {
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.p-header__nav-sp {
+  opacity: 0;
+  overflow: hidden;
+  visibility: hidden;
+  width: 100%;
+  height: 0;
+  z-index: -10;
+  pointer-events: none;
+  transform: translateY(-20px);
+  transition: all 0.2s ease;
+}
+
+.p-header__nav-sp.is-active {
+  @include flex();
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  opacity: 1;
+  overflow: visible;
+  visibility: visible;
+  z-index: 10;
+  background-color: $backgroundColor;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition: all 0.2s ease;
+}
+
+.p-header__nav__lists-sp {
+  @include flex();
+  flex-direction: column;
+  width: 100%;
+  gap: 40px;
+}
+
+.p-header__nav__item-sp {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid $mainColorBlack;
+  transition: all 0.5s ease;
+
+  &::after {
+    position: absolute;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    bottom: 0;
+    transform: scale(0, 1);
+    transform-origin: right;
+    transition: transform 0.5s ease;
+    z-index: 1; // 黒背景はz-index:1
+  }
+
+  .p-header__nav_link-sp {
+    position: relative;
+    z-index: 2; // テキストはz-index:2
+    color: $mainColorBlack; // 元のテキスト色は黒など
+    display: block;
+    height: 100%;
+    width: 100%;
+    font-weight: bold;
+    font-size: pxToRem(36);
+    text-decoration: none;
+  }
+
+  &:hover::after {
+    transform: scale(1, 1);
+    transform-origin: left;
+  }
+
+  &:hover .p-header__nav_link-sp {
+    color: white;
   }
 }

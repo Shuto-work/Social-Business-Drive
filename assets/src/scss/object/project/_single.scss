@@ -1,0 +1,44 @@
+@use "../../global/variable" as *;
+@use "../../global/mixin" as *;
+
+.l-section__single {
+  @include mq(lg) {
+    padding: 0 20px;
+  }
+  p {
+    margin-top: 20px;
+    text-align: left;
+    word-break: break-word;
+  }
+
+  h1 {
+    padding-bottom: 10px;
+    border-bottom: 3px solid $mainColorBlack;
+  }
+}
+
+.wp-block-heading {
+  margin-top: 30px;
+  text-align: left;
+}
+
+.p-single__title-wrap {
+}
+
+.p-single__thumbnail {
+  width: 100%;
+  height: auto;
+  margin-top: 50px;
+
+  img {
+    margin: 0 auto;
+  }
+}
+.p-single__date {
+}
+
+.p-single__title {
+  font-size: pxToRem(32);
+  border-bottom: 2px solid lightgray;
+  padding-bottom: 10px;
+}

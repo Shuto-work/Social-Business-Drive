@@ -1,0 +1,103 @@
+@use "../../global/variable" as *;
+@use "../../global/mixin" as *;
+
+.p-form__confirm-wrap {
+  padding-bottom: 20px;
+  border-bottom: 1px solid $mainColorBlack;
+}
+
+.p-form__confirm-title {
+  font-size: pxToRem(42);
+  text-align: center;
+}
+
+.p-form__confirm-text {
+  font-size: pxToRem(24);
+  text-align: center;
+  margin-top: 30px;
+}
+
+.p-member__img-form {
+  width: 60%;
+  height: auto;
+  margin: 30px auto 50px;
+}
+
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+// フォームコンテンツ
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+.p-form {
+  margin-top: 100px;
+}
+
+.p-form__row {
+  display: flex;
+}
+
+.p-form__label {
+  font-size: pxToRem(20);
+  text-align: left;
+  display: block;
+}
+
+.p-form__label-confirm {
+  // display: flex;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.p-form__row-confirm {
+  max-width: 600px;
+  width: 100%;
+}
+
+.wpcf7-form {
+  width: 100%;
+
+  p {
+    margin-top: 20px;
+
+    br {
+      display: none;
+    }
+  }
+}
+
+.wpcf7-form-control {
+  border: 1px gainsboro solid;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.p-form__row__submit {
+  p {
+    @include flex();
+    gap: 30px;
+  }
+}
+
+.p-form__submit,
+.p-form_return {
+  width: 100px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    // opacity: 0.7;
+    color: white;
+
+    background-color: $mainColorBlack;
+  }
+}
+
+.wpcf7-submit {
+  color: inherit;
+}
+
+.wpcf7-spinner {
+  display: none !important;
+}

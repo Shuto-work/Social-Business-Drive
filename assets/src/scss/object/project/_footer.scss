@@ -1,0 +1,54 @@
+@use "../../global/mixin" as *;
+
+.l-footer {
+  padding: 100px 0 50px;
+  height: 500px;
+  background-color: #fff;
+}
+
+.p-footer {
+  @include flex();
+  flex-direction: column;
+  gap: 100px;
+}
+
+.p-footer__img {
+  width: auto;
+  height: auto;
+}
+
+.p-footer__list {
+  display: flex;
+  gap: 30px;
+}
+
+.p-footer__item {
+  font-size: pxToRem(24);
+  position: relative;
+  font-weight: bold;
+
+  &::after {
+    position: absolute;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 3px;
+    background: #000000;
+    bottom: -5px;
+    transform: scale(0, 1);
+    // transform-origin: left top; /*変形（アンダーラインの伸長）の原点がaタグ（各メニュー）の左端*/
+    transform-origin: center; /*変形（アンダーラインの伸長）の原点がaタグ（各メニュー）の左端*/
+    transition: transform 0.5s ease;
+  }
+
+  &:hover::after {
+    transform: scale(1, 1); /*ホバー後、x軸方向に1（相対値）伸長*/
+    transform-origin: right left; /*右から左に向かう*/
+  }
+}
+
+.p-footer__privacy {
+  font-size: pxToRem(14);
+  margin-top: 100px;
+  padding-bottom: 10px;
+}

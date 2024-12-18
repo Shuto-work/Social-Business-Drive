@@ -20,7 +20,6 @@ $breakpoints: (
 
 $mediaquerys: (
   sp: "screen and (max-width: #{map.get($breakpoints,'sp')}px)",
-  sm: "screen and (min-width: #{map.get($breakpoints,'sm')}px)",
   tab:
     "screen and (min-width: #{map.get($breakpoints, 'md')}px) and (max-width: #{map.get($breakpoints, 'lg')}px)",
   md: "screen and (max-width: #{map.get($breakpoints,'md')}px)",
@@ -49,7 +48,7 @@ $mediaquerys: (
 @mixin display-pc {
   display: block;
 
-  @include mq(sp) {
+  @include mq(lg) {
     display: none;
   }
 }
@@ -62,10 +61,28 @@ $mediaquerys: (
   }
 }
 
-@mixin display-sp {
+// display-spミックスインを修正
+@mixin display-sp($display: block) {
   display: none;
 
-  @include mq(sp) {
-    display: block;
+  @include mq(lg) {
+    display: $display;
   }
+}
+
+// ハンバーガーメニューに適用
+.p-hamburger.display-sp {
+  @include display-sp(flex);
+}
+
+@mixin text(
+  $font-size: pxToRem(20),
+  $margin-top: 20px,
+  $line-height: 150%,
+  $text-align: left
+) {
+  font-size: $font-size;
+  margin-top: $margin-top;
+  line-height: $line-height;
+  text-align: $text-align;
 }

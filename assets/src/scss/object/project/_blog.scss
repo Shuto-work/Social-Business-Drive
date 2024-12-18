@@ -1,0 +1,121 @@
+@use "../../global/variable" as *;
+@use "../../global/mixin" as *;
+
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+// 記事ギャラリー
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+.p-articleGallery {
+  width: 100%;
+  margin: 100px auto 0;
+
+  @include mq(lg) {
+    margin-top: 50px;
+  }
+}
+
+.p-articleGallery__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+
+  @include mq(lg) {
+    gap: 30px;
+  }
+}
+
+.p-articleGallery__item {
+  max-width: 300px;
+  width: 100%;
+  display: inline-block;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 水平方向、垂直方向、ぼかし、色 */
+  transition: all 0.3s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  @include mq(lg) {
+    max-width: none;
+    height: 120px;
+  }
+}
+
+.p-articleGallery__link {
+  @include mq(lg) {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    height: 100%;
+  }
+}
+
+.p-articleGallery__image {
+  width: 100%;
+  height: 200px;
+
+  img {
+    width: 100%;
+    height: inherit;
+    object-fit: cover;
+  }
+
+  @include mq(lg) {
+    width: 30%;
+    height: 100%;
+  }
+}
+
+.p-articleGallery__text-box {
+  margin-top: 10px;
+  padding: 0 10px 30px;
+  text-align: left;
+
+  @include mq(lg) {
+    width: 70%;
+  }
+}
+
+.p-articleGallery__date {
+  font-size: pxToRem(10);
+  opacity: 0.6;
+  text-align: left;
+}
+
+.p-articleGallery__title {
+  margin-top: 10px;
+  font-size: pxToRem(14);
+  text-align: left;
+
+  /* 複数行のテキストを制限する */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  /* 省略記号の表示 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.p-articleGallery__pageNation {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.page-numbers {
+  margin: 0 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-flex; /* インラインで並べつつ、フレックスレイアウトを適用 */
+  justify-content: center;
+  align-items: center;
+}
+
+.current {
+  background-color: $mainColorBlack;
+  color: $backgroundColor;
+  border-radius: 50%;
+}
+
+.next {
+}

@@ -23,6 +23,7 @@ html,
 body {
   width: 100%;
   font-family: $font_ja;
+  // font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 1px;
   font-weight: 100;
   background-color: $backgroundColor;
@@ -32,12 +33,23 @@ html {
   margin: 0;
 }
 
+p {
+  text-align: center;
+}
 
 // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 /* ブラウザのスクロールバーを消す */
 // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 ::-webkit-scrollbar {
   display: none;
+}
+
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* サイトのテキスト選択時に背景色変更 */
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+::selection {
+  background-color: black;
+  color: white;
 }
 
 // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝

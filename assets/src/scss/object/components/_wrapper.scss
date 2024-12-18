@@ -1,4 +1,71 @@
-.l-wrapper {
+@use "../../global/mixin" as *;
+@use "../../global/variable" as *;
+
+.c-wrapper {
+  padding: 0 150px 100px;
+}
+
+.c-inner {
+  padding: 50px 0;
+
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 100px;
+}
+
+.c-text {
+  @include text();
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  @include mq(lg) {
+    font-size: pxToRem(16);
+  }
+}
+
+.c-text__box {
+  width: 100%;
+  margin-top: 80px;
+
+  @include mq(lg) {
+    margin-top: 30px;
+  }
+}
+
+.c-section__title {
+  font-size: pxToRem(42);
+  text-align: center;
+}
+
+.c-section__title__wrap {
+  display: flex;
+  flex-direction: column;
+
+  @include mq(lg) {
+  }
+}
+
+.c-section__title-en {
+  font-size: pxToRem(60);
+  text-align: left;
+  letter-spacing: 5px;
+
+  @include mq(lg) {
+    font-size: pxToRem(40);
+  }
+}
+
+.c-section__title-ja {
+  font-size: pxToRem(20);
+  font-weight: bold;
+  text-align: right;
+  padding-bottom: 20px;
+  border-bottom: 1px $mainColorBlack solid;
+
+  @include mq(lg) {
+    font-size: pxToRem(14);
+    padding-bottom: 10px;
+  }
 }

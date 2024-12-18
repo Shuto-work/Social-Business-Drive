@@ -1,11 +1,91 @@
+@use "../global/mixin" as *;
+
 .l-header {
   width: 100vw;
-  // height: 100px;
+  position: fixed;
+  z-index: 1;
+  transition: all 0.3s ease;
 }
 
 .l-fv {
-  position: relative;
+  @include flex($justify-content: left);
+  width: 100vw;
   height: 100vh;
-  background-image: url("/wp-content/uploads/2024/11/fv_image-scaled.jpg");
-  object-fit: cover;
+  background-image: url("/wp-content/uploads/2024/12/TOP_1-scaled.jpg");
+  background-position: center;
+}
+
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+// トップ画像の比較
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+.l-fv-2 {
+  @include flex($justify-content: left);
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/wp-content/uploads/2024/12/TOP_1-scaled.jpg");
+  background-position: center;
+}
+.l-fv-3 {
+  @include flex($justify-content: left);
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/wp-content/uploads/2024/12/TOP_3-scaled.jpg");
+  background-position: center;
+}
+
+.l-fv-4 {
+  @include flex($justify-content: left);
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/wp-content/uploads/2024/12/TOP_4-scaled.jpg");
+  background-position: center;
+}
+.l-fv-5 {
+  @include flex($justify-content: left);
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/wp-content/uploads/2024/12/TOP_5-scaled.jpg");
+  background-position: center;
+}
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+// ここまで
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+.l-section,
+.l-section__single,
+.l-section__contact {
+  margin-top: 100px;
+  max-width: 1000px;
+  margin: 100px auto;
+  padding-bottom: 50px;
+
+  @include mq(lg) {
+    padding: 0 15px;
+    // margin-top: 100px;
+  }
+}
+
+.l-section__contact__header-sp {
+  @include mq(lg) {
+    padding: 0 15px;
+    margin-top: 0;
+  }
+}
+
+.l-section__contact {
+  margin-top: 100px;
+  max-width: 1000px;
+  margin: 100px auto;
+  padding-bottom: 50px;
+
+  @include mq(lg) {
+    padding: 0 20px;
+    // margin-top: 50px;
+  }
+}
+
+.l-footer {
+  width: 100vw;
+  height: 400px;
 }

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-	<h1 class="l-main">sbd</h1>
+	<h1 class="l-main">index.php</h1>
 </body>
 
 </html>
